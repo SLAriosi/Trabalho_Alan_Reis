@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Contato - Meu Portfólio</title>
+</head>
+<body>
+    <div class="contato">
+        <a href="contato.html">Contatos</a>
+    </div>
+    <div class="academicos">
+        <a href="index.html">Academicos</a>
+    </div>
+    <div id="contact-section" class="section contact-back">
+        <div class="contact-container">
+            <form id="contact-form">
+                <h2 class="form-title">ENTRE EM CONTATO</h2>
+        
+                <div class="form-group">
+                    <label for="name">NOME:</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="email">EMAIL:</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="message">MENSAGEM:</label>
+                    <textarea id="message" name="message" class="form-textarea" required></textarea>
+                </div>
+        
+                <button type="submit" class="form-submit">ENVIAR</button>
+            </form>
+        </div>
+
+        <div class="google-maps-container">
+            <p>Localização</p>
+            <div class="google-maps-embed">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.8063294384383!2d-53.284063225470994!3d-23.75428477866769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f2d1e658459f85%3A0x7b81c993c8545f96!2sFaculdade%20ALFA%20Umuarama%20-%20UniALFA!5e0!3m2!1spt-BR!2sbr!4v1699560009028!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+    <script>
+    // Adicione funcionalidades dinâmicas ao formulário usando jQuery
+    $(document).ready(function () {
+        $('#contact-form').submit(function (event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+    
+            // Validação simples dos campos (pode ser melhorada)
+            const name = $('#name').val();
+            const email = $('#email').val();
+            const message = $('#message').val();
+    
+            if (!name || !email || !message) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+    
+            // Simulação de envio do formulário usando o método $.post do jQuery
+            $.post('https://jsonplaceholder.typicode.com/posts', {
+                name: name,
+                email: email,
+                message: message,
+            })
+            .done(function (data) {
+                // Limpa os campos após o envio
+                $('#name, #email, #message').val('');
+    
+                // Exibe mensagem de sucesso (pode ser melhorada)
+                alert('Mensagem enviada com sucesso!');
+            })
+            .fail(function (error) {
+                console.error('Erro ao enviar o formulário:', error);
+                alert('Erro ao enviar o formulário. Tente novamente mais tarde.');
+            });
+        });
+    });
+</script>
+</body>
+</html>
